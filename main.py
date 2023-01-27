@@ -1,5 +1,5 @@
 from pytube import YouTube
-
+import time
 
 path_for_music = '/home/infected/Рабочий стол/music from youtube'
 while True:
@@ -8,6 +8,7 @@ while True:
     if "https://www.youtube" not in video:
         print("Введите правильную ссылку на видео")
     else:
+        start = time.time()
         yt = YouTube(video)
         print(yt.title)
         print(yt.thumbnail_url)
@@ -16,5 +17,6 @@ while True:
         stream.download(output_path=path_for_music, filename=f'{yt.title}.mp3')
 
         print('[INFO] COMPLETE!')
-
+        end = time.time() - start
+        print(end)
         break
